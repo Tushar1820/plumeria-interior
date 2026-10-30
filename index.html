@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <!-- About Section with 10 Image Grid -->
+    <!-- About Section with Autoplay Loop Slider -->
     <section id="about">
         <div class="section-title">
             <span>আমাদের কথা</span>
@@ -43,20 +43,28 @@
             <p>বিগত ৫ বছর ধরে আমরা বাংলাদেশে অত্যন্ত সুনামের সাথে লাক্সারি এবং মডার্ন ইন্টেরিয়র ডিজাইন সেবা দিয়ে আসছি। আমাদের দক্ষ আর্কিটেক্ট ও ডিজাইনার দল প্রতিটি স্পেসকে এমনভাবে সাজায় যা একই সাথে আরামদায়ক ও দৃষ্টিনন্দন। <strong>✓ ১০০% মানসম্মত কাজ ও সময়মতো ডেলিভারি।</strong></p>
         </div>
         
-        <!-- 10 Image Grid with Instant View trigger -->
-        <div class="image-grid-10">
-            <div class="grid-item"><img src="images/about1.jpg" alt="Project 1" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about2.jpg" alt="Project 2" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about3.jpg" alt="Project 3" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about4.jpg" alt="Project 4" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about5.jpg" alt="Project 5" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about6.jpg" alt="Project 6" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about7.jpg" alt="Project 7" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about8.jpg" alt="Project 8" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about9.jpg" alt="Project 9" onclick="openLightbox(this.src)"></div>
-            <div class="grid-item"><img src="images/about10.jpg" alt="Project 10" onclick="openLightbox(this.src)"></div>
+        <!-- 🔄 চক্রাকার লুপ স্লাইডার উইন্ডো -->
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slider-item"><img src="images/about1.jpg" alt="Project 1" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about2.jpg" alt="Project 2" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about3.jpg" alt="Project 3" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about4.jpg" alt="Project 4" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about5.jpg" alt="Project 5" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about6.jpg" alt="Project 6" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about7.jpg" alt="Project 7" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about8.jpg" alt="Project 8" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about9.jpg" alt="Project 9" onclick="openLightbox(this.src)"></div>
+                <div class="slider-item"><img src="images/about10.jpg" alt="Project 10" onclick="openLightbox(this.src)"></div>
+            </div>
+            <!-- নেভিগেশন বাটনসমূহ -->
+            <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
         </div>
     </section>
+
+    <!-- ১ম প্যারালাক্স উইন্ডো -->
+    <div class="parallax-bg bg-1"></div>
 
     <!-- Services Section -->
     <section id="services" class="services">
@@ -78,7 +86,12 @@
                 <div class="grid-item-6"><img src="images/residential6.jpg" alt="Residential 6"></div>
             </div>
         </div>
+    </section>
 
+    <!-- ২য় প্যারালাক্স উইন্ডো -->
+    <div class="parallax-bg bg-2"></div>
+
+    <section class="services-two" style="padding-top: 40px;">
         <!-- Office Interior Section -->
         <div class="service-block">
             <h3>💼 অফিস ইন্টেরিয়র</h3>
@@ -93,6 +106,9 @@
             </div>
         </div>
     </section>
+
+    <!-- ৩য় প্যারালাক্স উইন্ডো -->
+    <div class="parallax-bg bg-3"></div>
 
     <!-- Clients & Dynamic Feedback Reviews Section -->
     <section id="reviews" class="reviews-section">
@@ -129,14 +145,12 @@
 
             <div class="review-display-block">
                 <h3>গ্রাহকদের লাইভ মতামত ও রেটিংস</h3>
-                <div id="reviewsList">
-                    <!-- Reviews appear dynamically -->
-                </div>
+                <div id="reviewsList"></div>
             </div>
         </div>
     </section>
 
-    <!-- Lightbox Modal for Full Screen Image -->
+    <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-btn">&times;</span>
         <img id="lightboxImg" src="" alt="Full Screen View">
