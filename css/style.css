@@ -54,6 +54,7 @@ nav .btn {
 .hero {
     position: relative;
     height: 100vh;
+    min-height: 600px;
     padding-top: 85px;
     background: url('../images/hero-bg.jpg') no-repeat center center/contain;
     background-attachment: fixed;
@@ -81,12 +82,13 @@ nav .btn {
     background: rgba(255, 255, 255, 0.85);
     border-radius: 15px;
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* iOS সাপোর্ট ফিক্স */
     opacity: 0;
     transform: scale(0.8);
     transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .hero-content.animate-in { opacity: 1; transform: scale(1); }
-.hero-content.animate-out { opacity: 0; transform: scale(0.8); filter: blur(10px); transition: all 1s ease-in; }
+.hero-content.animate-out { opacity: 0; transform: scale(0.8); filter: blur(10px); -webkit-filter: blur(10px); transition: all 1s ease-in; }
 
 .hero h1 { font-size: 2.5rem; color: #111827; margin-bottom: 20px; }
 .hero p { font-size: 1.2rem; color: #4b5563; margin-bottom: 30px; }
@@ -94,17 +96,17 @@ nav .btn {
 .hero .btn-main { background-color: #b45309; color: white; }
 .hero .btn-sub { background-color: #111827; color: white; }
 
-/* 🌟 কমন প্যারালাক্স উইন্ডো ক্লাস (সেকশনগুলোর মাঝে ছবি ফিক্সড রাখার ম্যাজিক) */
+/* 🌟 কমন প্যারালাক্স উইন্ডো ক্লাস */
 .parallax-bg {
-    height: 50vh; /* উইন্ডোর উচ্চতা */
+    height: 50vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* ছবি ব্যাকগ্রাউন্ডে লক করে রাখবে */
+    background-attachment: fixed;
     box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
 }
 
-/* প্রতিটি প্যারালাক্স সেকশনের আলাদা ছবি লিংক */
+/* প্রতিটি প্যারালাক্স সেকশনের ছবি লিংক */
 .bg-1 { background-image: url('../images/about1.jpg'); } 
 .bg-2 { background-image: url('../images/residential1.jpg'); } 
 .bg-3 { background-image: url('../images/office1.jpg'); } 
@@ -121,7 +123,7 @@ section {
 .section-title h2 { font-size: 32px; margin-top: 5px; color: #111827; }
 .about-desc { text-align: center; max-width: 800px; margin: 0 auto 40px; color: #4b5563; line-height: 1.8; }
 
-/* 🔄 ডাইনামিক লুপ স্লাইডার ফ্রেমওয়ার্ক (পুরাতন গ্রিডের পরিবর্তে) */
+/* 🔄 ডাইনামিক লুপ স্লাইডার ফ্রেমওয়ার্ক */
 .slider-container {
     position: relative;
     max-width: 100%;
@@ -135,7 +137,7 @@ section {
     width: 100%;
 }
 .slider-item {
-    flex: 0 0 25%; /* ডেস্কটপে একসাথে ৪টি করে ছবি দেখাবে */
+    flex: 0 0 25%;
     padding: 0 10px;
     height: 220px;
     overflow: hidden;
@@ -205,9 +207,9 @@ section {
 .close-btn { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
 footer { position: relative; z-index: 10; text-align: center; padding: 25px; background: #111827; color: #6b7280; }
 
-/* Responsive adjustments */
+/* 📱 মোবাইল ও ট্যাবলেট ১০০% পারফেক্ট অ্যানিমেশন ও রেসপনসিভ ফিক্স */
 @media (max-width: 1024px) {
-    .slider-item { flex: 0 0 50%; } /* ট্যাবলেটে ২টি ছবি */
+    .slider-item { flex: 0 0 50%; }
     .image-grid-6 { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -229,26 +231,26 @@ footer { position: relative; z-index: 10; text-align: center; padding: 25px; bac
     nav .btn { display: inline-block; padding: 6px 18px; font-size: 13px; }
     
     .hero {
-        background-attachment: scroll;
-        height: auto;
-        min-height: 70vh;
-        padding: 40px 20px;
+        height: 100vh; /* মোবাইল হাইট লক ফিক্স */
+        background-attachment: scroll; /* মোবাইল ব্রাউজার ওভারফ্লো এবং রি-রেন্ডার এরর ফিক্স */
     }
     .parallax-bg {
         background-attachment: scroll; 
-        height: 30vh;
+        height: 35vh;
     }
-    .hero h1 { font-size: 1.8rem; }
+    .hero h1 { font-size: 1.6rem; line-height: 1.4; }
+    .hero p { font-size: 1rem; }
     .review-container { flex-direction: column; }
 }
 
 @media (max-width: 600px) {
-    .slider-item { flex: 0 0 100%; } /* মোবাইলে ১টি ছবি */
-    .slider-btn { padding: 10px 12px; font-size: 14px; }
+    .slider-item { flex: 0 0 100%; }
+    .slider-btn { padding: 8px 10px; font-size: 12px; }
 }
 
 @media (max-width: 480px) {
     .image-grid-6 { grid-template-columns: repeat(1, 1fr); }
     nav .nav-links { gap: 5px; }
-    nav .nav-links a { font-size: 12px; }
+    nav .nav-links a { font-size: 11px; }
+    .hero h1 { font-size: 1.4rem; }
 }
