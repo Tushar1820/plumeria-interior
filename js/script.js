@@ -4,8 +4,11 @@ const ctx = canvas.getContext('2d');
 let particles = [];
 
 function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    if (canvas) {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
 }
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
@@ -66,6 +69,7 @@ function runAnimationCycle() {
     if(heroContent) {
         heroContent.className = 'hero-content animate-in';
         setTimeout(() => {
+            resizeCanvas();
             createFirework(canvas.width / 2, canvas.height / 2);
         }, 800);
         setTimeout(() => {
@@ -81,11 +85,14 @@ setInterval(runAnimationCycle, 10000);
 function openLightbox(src) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
-    lightboxImg.src = src;
-    lightbox.style.display = 'flex';
+    if(lightboxImg && lightbox) {
+        lightboxImg.src = src;
+        lightbox.style.display = 'flex';
+    }
 }
 function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
+    const lightbox = document.getElementById('lightbox');
+    if(lightbox) lightbox.style.display = 'none';
 }
 
 // Local Storage Engine for Client Ratings and Comments
@@ -126,7 +133,7 @@ if(reviewForm) {
 
 loadReviews();
 
-// 🔄 অটো-প্লে ইমেজ লুপ স্লাইডার ইঞ্জিন (এবাউট সেকশনের জন্য নতুন কোড)
+// 🔄 অটো-প্লে ইমেজ লুপ স্লাইডার ইঞ্জিন
 let currentSliderIndex = 0;
 const sliderTrack = document.getElementById('sliderTrack');
 const sliderItems = document.querySelectorAll('.slider-item');
@@ -135,17 +142,17 @@ const totalSliderItems = sliderItems.length;
 function updateSliderPosition() {
     if(!sliderTrack || totalSliderItems === 0) return;
     
-    let itemsPerView = 4; // ডেস্কটপে একসাথে ৪টি করে ছবি দেখাবে
+    let itemsPerView = 4; 
     if (window.innerWidth <= 600) {
-        itemsPerView = 1; // মোবাইলে ১টি ছবি
+        itemsPerView = 1; 
     } else if (window.innerWidth <= 1024) {
-        itemsPerView = 2; // ট্যাবলেটে ২টি ছবি
+        itemsPerView = 2; 
     }
     
     const maxIndex = totalSliderItems - itemsPerView;
     
     if (currentSliderIndex > maxIndex) {
-        currentSliderIndex = 0; // চক্রাকারে প্রথমে ফিরে আসবে
+        currentSliderIndex = 0; 
     } else if (currentSliderIndex < 0) {
         currentSliderIndex = maxIndex;
     }
@@ -159,17 +166,15 @@ function moveSlider(direction) {
     updateSliderPosition();
 }
 
-// স্লাইডার ট্র্যাক ও কন্টেইনার থাকলে অটো-প্লে চালু হবে
 const sliderContainer = document.querySelector('.slider-container');
 if(sliderContainer && sliderTrack) {
-    // প্রতি ৩ সেকেন্ড পর পর স্বয়ংক্রিয়ভাবে ঘুরবে
     let autoPlayInterval = setInterval(() => moveSlider(1), 3000);
 
-    // মাউস স্লাইডারের ওপর নিয়ে গেলে অটো-প্লে সাময়িক বন্ধ থাকবে
     sliderContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
     sliderContainer.addEventListener('mouseleave', () => autoPlayInterval = setInterval(() => moveSlider(1), 3000));
+    sliderContainer.addEventListener('touchstart', () => clearInterval(autoPlayInterval), {passive: true});
     
     window.addEventListener('resize', updateSliderPosition);
-    // পেজ লোড হওয়ার সাথে সাথে পজিশন ঠিক করার জন্য একবার রান করা হলো
+    window.addEventListener('load', updateSliderPosition);
     updateSliderPosition();
 }
