@@ -50,12 +50,13 @@ nav .btn {
     transition: background 0.3s;
 }
 
-/* Hero Content Window Fix */
+/* Hero Content Window Fix + Parallax Effect */
 .hero {
     position: relative;
     height: 100vh;
     padding-top: 85px;
     background: url('../images/hero-bg.jpg') no-repeat center center/contain;
+    background-attachment: fixed;
     background-color: #f3f4f6;
     display: flex;
     justify-content: center;
@@ -93,25 +94,87 @@ nav .btn {
 .hero .btn-main { background-color: #b45309; color: white; }
 .hero .btn-sub { background-color: #111827; color: white; }
 
-/* Grids Setup */
-section { padding: 80px 5%; }
+/* 🌟 কমন প্যারালাক্স উইন্ডো ক্লাস (সেকশনগুলোর মাঝে ছবি ফিক্সড রাখার ম্যাজিক) */
+.parallax-bg {
+    height: 50vh; /* উইন্ডোর উচ্চতা */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* ছবি ব্যাকগ্রাউন্ডে লক করে রাখবে */
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+}
+
+/* প্রতিটি প্যারালাক্স সেকশনের আলাদা ছবি লিংক */
+.bg-1 { background-image: url('../images/about1.jpg'); } 
+.bg-2 { background-image: url('../images/residential1.jpg'); } 
+.bg-3 { background-image: url('../images/office1.jpg'); } 
+
+/* Sections Layout Setup */
+section { 
+    position: relative;
+    z-index: 10;
+    background-color: #f9fafb;
+    padding: 80px 5%; 
+}
 .section-title { text-align: center; margin-bottom: 30px; }
 .section-title span { color: #b45309; font-weight: bold; text-transform: uppercase; font-size: 14px; }
 .section-title h2 { font-size: 32px; margin-top: 5px; color: #111827; }
 .about-desc { text-align: center; max-width: 800px; margin: 0 auto 40px; color: #4b5563; line-height: 1.8; }
 
-/* 10 Gallery Grid - ৫টি সমান কলাম ফিক্স */
-.image-grid-10 { 
-    display: grid; 
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 15px; 
+/* 🔄 ডাইনামিক লুপ স্লাইডার ফ্রেমওয়ার্ক (পুরাতন গ্রিডের পরিবর্তে) */
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    margin: 0 auto;
 }
-.grid-item { overflow: hidden; border-radius: 8px; height: 180px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); cursor: pointer; }
-.grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.grid-item:hover img { transform: scale(1.08); }
+.slider-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+.slider-item {
+    flex: 0 0 25%; /* ডেস্কটপে একসাথে ৪টি করে ছবি দেখাবে */
+    padding: 0 10px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease;
+}
+.slider-item:hover img {
+    transform: scale(1.05);
+}
 
-/* Service Layout (6 images grids) - ৩টি সমান কলাম ফিক্স */
-.service-block { background: white; padding: 30px; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+/* স্লাইডার ক্লিক বাটন সমূহ */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(180, 83, 9, 0.8);
+    color: white;
+    border: none;
+    padding: 15px 18px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 20;
+    transition: background 0.3s;
+}
+.slider-btn:hover { background: #111827; }
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* Service Layout (6 images grids) */
+.service-block { background: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
 .service-block h3 { color: #b45309; margin-bottom: 10px; font-size: 22px; }
 .service-p { color: #6b7280; margin-bottom: 25px; }
 
@@ -140,11 +203,11 @@ section { padding: 80px 5%; }
 .lightbox { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
 .lightbox img { max-width: 90%; max-height: 85%; border-radius: 5px; }
 .close-btn { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
-footer { text-align: center; padding: 25px; background: #111827; color: #6b7280; }
+footer { position: relative; z-index: 10; text-align: center; padding: 25px; background: #111827; color: #6b7280; }
 
-/* ট্যাবলেট এবং মোবাইলের জন্য ফুল রেসপনসিভ রেডি ফিক্স */
+/* Responsive adjustments */
 @media (max-width: 1024px) {
-    .image-grid-10 { grid-template-columns: repeat(2, 1fr); }
+    .slider-item { flex: 0 0 50%; } /* ট্যাবলেটে ২টি ছবি */
     .image-grid-6 { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -162,30 +225,29 @@ footer { text-align: center; padding: 25px; background: #111827; color: #6b7280;
         justify-content: center;
         gap: 10px;
     }
-    nav .nav-links a {
-        margin: 0 5px;
-        font-size: 14px;
-    }
-    nav .btn {
-        display: inline-block;
-        padding: 6px 18px;
-        font-size: 13px;
-    }
+    nav .nav-links a { margin: 0 5px; font-size: 14px; }
+    nav .btn { display: inline-block; padding: 6px 18px; font-size: 13px; }
+    
     .hero {
+        background-attachment: scroll;
         height: auto;
         min-height: 70vh;
         padding: 40px 20px;
     }
-    .hero h1 {
-        font-size: 1.8rem;
+    .parallax-bg {
+        background-attachment: scroll; 
+        height: 30vh;
     }
-    .review-container { 
-        flex-direction: column; 
-    }
+    .hero h1 { font-size: 1.8rem; }
+    .review-container { flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+    .slider-item { flex: 0 0 100%; } /* মোবাইলে ১টি ছবি */
+    .slider-btn { padding: 10px 12px; font-size: 14px; }
 }
 
 @media (max-width: 480px) {
-    .image-grid-10 { grid-template-columns: repeat(1, 1fr); }
     .image-grid-6 { grid-template-columns: repeat(1, 1fr); }
     nav .nav-links { gap: 5px; }
     nav .nav-links a { font-size: 12px; }
