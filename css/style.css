@@ -142,16 +142,51 @@ section { padding: 80px 5%; }
 .close-btn { position: absolute; top: 30px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
 footer { text-align: center; padding: 25px; background: #111827; color: #6b7280; }
 
-/* ট্যাবলেট এবং মোবাইলের জন্য ফুল রেসপনসিভ ফিক্স */
+/* ট্যাবলেট এবং মোবাইলের জন্য ফুল রেসপনসিভ রেডি ফিক্স */
 @media (max-width: 1024px) {
     .image-grid-10 { grid-template-columns: repeat(2, 1fr); }
     .image-grid-6 { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 768px) {
-    nav .nav-links, nav .btn { display: none; }
-    .review-container { flex-direction: column; }
+    nav {
+        position: relative;
+        flex-direction: column;
+        gap: 12px;
+        padding: 15px 5%;
+        text-align: center;
+    }
+    nav .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    nav .nav-links a {
+        margin: 0 5px;
+        font-size: 14px;
+    }
+    nav .btn {
+        display: inline-block;
+        padding: 6px 18px;
+        font-size: 13px;
+    }
+    .hero {
+        height: auto;
+        min-height: 70vh;
+        padding: 40px 20px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .review-container { 
+        flex-direction: column; 
+    }
 }
+
 @media (max-width: 480px) {
     .image-grid-10 { grid-template-columns: repeat(1, 1fr); }
     .image-grid-6 { grid-template-columns: repeat(1, 1fr); }
+    nav .nav-links { gap: 5px; }
+    nav .nav-links a { font-size: 12px; }
 }
