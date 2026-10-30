@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্লামেরিয়া ইন্টেরিয়র - আপনার স্বপ্নের আবাসন</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">প্লামেরিয়া<span> ইন্টেরিয়র</span></a>
+        <div class="nav-links">
+            <a href="#home">হোম</a>
+            <a href="#about">আমাদের সম্পর্কে</a>
+            <a href="#services">সেবাসমূহ</a>
+            <a href="#reviews">গ্রাহকদের মতামত</a>
+        </div>
+        <a href="#reviews" class="btn">ফ্রি কনসালটেশন</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="fireworksCanvas"></canvas>
+        <div class="hero-content" id="heroContent">
+            <h1>আপনার সাধারণ ঘরকে করুন অসাধারণ ও নান্দনিক</h1>
+            <p>আমরা আপনার চিন্তাভাবনা এবং আমাদের সৃজনশীলতা দিয়ে তৈরি করি আপনার স্বপ্নের থাকার জায়গা।</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn-main">কাজগুলো দেখুন</a>
+                <a href="#reviews" class="btn-sub">যোগাযোগ করুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with 10 Image Grid -->
+    <section id="about">
+        <div class="section-title">
+            <span>আমাদের কথা</span>
+            <h2>আমরা কেন সেরা এবং অনন্য?</h2>
+        </div>
+        <div class="about-desc">
+            <p>বিগত ৫ বছর ধরে আমরা বাংলাদেশে অত্যন্ত সুনামের সাথে লাক্সারি এবং মডার্ন ইন্টেরিয়র ডিজাইন সেবা দিয়ে আসছি। আমাদের দক্ষ আর্কিটেক্ট ও ডিজাইনার দল প্রতিটি স্পেসকে এমনভাবে সাজায় যা একই সাথে আরামদায়ক ও দৃষ্টিনন্দন। <strong>✓ ১০০% মানসম্মত কাজ ও সময়মতো ডেলিভারি।</strong></p>
+        </div>
+        
+        <!-- 10 Image Grid with Instant View trigger -->
+        <div class="image-grid-10">
+            <div class="grid-item"><img src="images/about1.jpg" alt="Project 1" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about2.jpg" alt="Project 2" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about3.jpg" alt="Project 3" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about4.jpg" alt="Project 4" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about5.jpg" alt="Project 5" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about6.jpg" alt="Project 6" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about7.jpg" alt="Project 7" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about8.jpg" alt="Project 8" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about9.jpg" alt="Project 9" onclick="openLightbox(this.src)"></div>
+            <div class="grid-item"><img src="images/about10.jpg" alt="Project 10" onclick="openLightbox(this.src)"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <span>আমাদের সেবাসমূহ</span>
+            <h2>যেসব সার্ভিস আমরা প্রদান করি</h2>
+        </div>
+        
+        <!-- Residential Design Section -->
+        <div class="service-block">
+            <h3>🏠 রেসিডেন্সিয়াল ডিজাইন</h3>
+            <p class="service-p">আপনার বেডরুম, লিভিং রুম কিংবা ড্রয়িং রুমকে আধুনিক লাইটিং এবং ফার্নিচার দিয়ে সাজিয়ে তুলুন।</p>
+            <div class="image-grid-6">
+                <div class="grid-item-6"><img src="images/residential1.jpg" alt="Residential 1"></div>
+                <div class="grid-item-6"><img src="images/residential2.jpg" alt="Residential 2"></div>
+                <div class="grid-item-6"><img src="images/residential3.jpg" alt="Residential 3"></div>
+                <div class="grid-item-6"><img src="images/residential4.jpg" alt="Residential 4"></div>
+                <div class="grid-item-6"><img src="images/residential5.jpg" alt="Residential 5"></div>
+                <div class="grid-item-6"><img src="images/residential6.jpg" alt="Residential 6"></div>
+            </div>
+        </div>
+
+        <!-- Office Interior Section -->
+        <div class="service-block">
+            <h3>💼 অফিস ইন্টেরিয়র</h3>
+            <p class="service-p">আপনার কর্পোরেট স্পেসকে করুন পেশাদার ও অনুপ্রেরণামূলক কাজের পরিবেশ।</p>
+            <div class="image-grid-6">
+                <div class="grid-item-6"><img src="images/office1.jpg" alt="Office 1"></div>
+                <div class="grid-item-6"><img src="images/office2.jpg" alt="Office 2"></div>
+                <div class="grid-item-6"><img src="images/office3.jpg" alt="Office 3"></div>
+                <div class="grid-item-6"><img src="images/office4.jpg" alt="Office 4"></div>
+                <div class="grid-item-6"><img src="images/office5.jpg" alt="Office 5"></div>
+                <div class="grid-item-6"><img src="images/office6.jpg" alt="Office 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients & Dynamic Feedback Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="section-title">
+            <span>আমাদের পার্টনার ও ক্লায়েন্ট</span>
+            <h2>আমাদের সন্তুষ্ট ক্লায়েন্টসমূহ</h2>
+        </div>
+        <div class="client-list">
+            <div class="client-logo">রিয়েল এস্টেট পার্টনার্স</div>
+            <div class="client-logo">কর্পোরেট হাব লিমিটেড</div>
+            <div class="client-logo">গ্লোবাল সリューションস</div>
+            <div class="client-logo">ডেকোর প্যারাডাইস</div>
+        </div>
+
+        <div class="review-container">
+            <div class="review-form-block">
+                <h3>আপনার মতামত ও রেটিং দিন</h3>
+                <form id="reviewForm">
+                    <input type="text" id="clientName" placeholder="আপনার নাম" required>
+                    <textarea id="clientComment" placeholder="আপনার মূল্যবান মন্তব্য..." rows="4" required></textarea>
+                    <div class="rating-input">
+                        <label>রেটিং: </label>
+                        <select id="clientRating">
+                            <option value="5">⭐⭐⭐⭐⭐ (৫ স্টার)</option>
+                            <option value="4">⭐⭐⭐⭐ (৪ স্টার)</option>
+                            <option value="3">⭐⭐⭐ (৩ স্টার)</option>
+                            <option value="2">⭐⭐ (২ স্টার)</option>
+                            <option value="1">⭐ (১ স্টার)</option>
+                        </select>
+                    </div>
+                    <button type="submit">জমা দিন</button>
+                </form>
+            </div>
+
+            <div class="review-display-block">
+                <h3>গ্রাহকদের লাইভ মতামত ও রেটিংস</h3>
+                <div id="reviewsList">
+                    <!-- Reviews appear dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Full Screen Image -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightboxImg" src="" alt="Full Screen View">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 প্লামেরিয়া ইন্টেরিয়র। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
